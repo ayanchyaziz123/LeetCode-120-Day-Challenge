@@ -1,25 +1,45 @@
-from typing import List
-from math import pow, floor
+def generate_landlord_letter(landlord_name, tenant_name, property_address, start_date, end_date, contact_info):
+    letter = f"""
+{landlord_name}
+Property Manager
+{contact_info['address']}
+{contact_info['city']}, {contact_info['state']}, {contact_info['zip']}
+Phone: {contact_info['phone']}
+Date: {contact_info['date']}
 
-class Solution:
-    def oddEven2(self, n: int) -> List[int]:
-        p1 = 0
-        p2 = 0
-        for i in range(1, n+1):
-            if i % 2 == 0:
-                p1+=i
-            else:
-                p2+=i
-        return [p2, p1] 
-    def oddEven(self, n: int) -> List[int]:
-        total_even, total_odd = 0, 0
-        if n % 2 == 0:
-            total_even = n//2
-            total_odd = n//2
-        else:
-            total_even = n//2
-            total_odd = n//2 + 1 
-        odd_sum = floor(pow(total_odd, 2))
-        even_sum = total_even * (total_even + 1)
-        return [odd_sum, even_sum]
-print(Solution().oddEven(123456788))
+To Whom It May Concern,
+
+I am writing this letter to verify the tenancy of {tenant_name}. They have been residing at {property_address}, which is owned and managed by our property management, from {start_date} to {end_date}.
+
+During the period of their tenancy, {tenant_name} has consistently met the obligations of the rental agreement, including the timely payment of rent and maintenance of the property in a satisfactory condition. We have found them to be a responsible and respectful tenant.
+
+Should you require any further information or verification, please feel free to contact me at {contact_info['phone']}.
+
+Sincerely,
+
+[Your Signature]
+{landlord_name}
+Property Manager
+"""
+
+    return letter
+
+# Example usage
+contact_info = {
+    'address': '8017 101st avenue',
+    'city': 'New York',
+    'state': 'New York',
+    'zip': '11416',
+    'phone': '(347) 669-6071',
+    'date': 'April 4, 2024'
+}
+
+landlord_name = 'Aziz Chowdhury'
+tenant_name = 'Md Mahbubur Rahman, Fahima Uddin and Maha Rahman'
+property_address = '9308 101st avenue ozone park, new york 11416'
+starting = 'January 1, 2022'
+ending = 'present'
+
+
+
+print(generate_landlord_letter(landlord_name, tenant_name, property_address, starting, ending, contact_info))

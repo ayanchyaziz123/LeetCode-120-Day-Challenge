@@ -1,3 +1,4 @@
+from typing import List
 class Solution:
     def isPossibleToSplit(self, nums: List[int]) -> bool:
         # Create a frequency array to count occurrences of each number (up to 1000)
